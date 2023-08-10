@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 
 
 import '../../../../core/utilities/error/failure.dart';
-import '../../../../core/wep_services/auth_wep_services.dart';
+import '../../../../core/wep_services/firebase_auth_services.dart';
 
 class AuthRepo {
   final AuthWebServices authWepServices;

@@ -12,12 +12,21 @@ TextStyle appStyle(
 }
 
 class Style {
-  static final textStyle14 = appStyle(
-    size: 14,
-    fw: FontWeight.w500,
+
+  static final textStyle12 = appStyle(
+    size: 12,
+    fw: FontWeight.normal,
   );
 
-  static final textStyle15 = appStyle(size: 15, fw: FontWeight.w900);
+  static final textStyle14 = appStyle(
+    size: 14,
+    fw: FontWeight.normal,
+  );
+
+  static final textStyle15 = appStyle(
+    size: 15,
+    fw: FontWeight.normal,
+  );
 
   static final textStyle16 = appStyle(
     size: 16,
@@ -45,7 +54,12 @@ class Style {
 
   static final textStyle28 = appStyle(
     size: 28.sp,
-    fw: FontWeight.bold,
+    fw: FontWeight.normal,
+  );
+
+  static final textStyle30 = appStyle(
+    size: 30.sp,
+    fw: FontWeight.normal,
   );
 
   static final textStyle34 = appStyle(

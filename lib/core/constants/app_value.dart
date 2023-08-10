@@ -4,6 +4,7 @@ class AppPadding {
   static const  double p0 = 0.0;
   static final double p4 = 4.0.r;
   static final double p8 = 8.0.r;
+  static final double p10 = 10.0.r;
   static final double p12 = 12.0.r;
   static final double p14 = 14.0.r;
   static final double p16 = 16.0.r;
@@ -12,6 +13,10 @@ class AppPadding {
 }
 
 class AppSize {
+  static final double s4Height = 4.0.h;
+  static final double s4Width = 4.0.w;
+  static final double s6Height = 6.0.h;
+  static final double s6Width = 6.0.w;
   static final double s8Height = 8.0.h;
   static final double s8Width = 8.0.w;
   static final double s10Height = 10.0.h;
@@ -35,6 +40,16 @@ class AppSize {
 
   static final double s100Height = 100.0.h;
   static final double s100Width = 100.0.w;
+  static final double s172Height = 172.0.h;
+  static final double s182Width = 182.0.w;
   static final double s200Height = 200.0.h;
   static final double s200Width = 200.0.w;
+  static final double s260Height = 260.0.h;
+  static final double s260Width = 260.0.w;
+  static final double s280Height = 280.0.h;
+  static final double s280Width = 280.0.w;
+  static final double s300Height = 300.0.h;
+  static final double s300Width = 300.0.w;
+  static final double s350Height = 350.0.h;
+  static final double s350Width = 350.0.w;
 }

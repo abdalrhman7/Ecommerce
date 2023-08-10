@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/app_route/routes.dart';
+import 'package:e_commerce/feature/bottom_navbar/presentation/view/bottom_navbar.dart';
 import 'package:e_commerce/feature/splash/business_logic/splash_cubit.dart';
 import 'package:e_commerce/feature/splash/presentation/view/widget/sliding_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,8 +11,7 @@ import '../../../../../injection.dart';
 import '../../../../auth/business_logic/auth_cubit.dart';
 import '../../../../auth/data/repo/auth_repo.dart';
 import '../../../../auth/presentation/view/auth_screen.dart';
-import '../../../data/repo/repo.dart';
-import '../splash_screen.dart';
+
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -59,9 +58,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
           if (snapshot.connectionState == ConnectionState.active) {
             final user = snapshot.data?.email;
             if (user == null) {
-              navigateToAuthScreen();
+              return navigateToAuthScreen();
             } else {
-              navigateToBottomNavBar();
+              return   navigateToBottomNavBar();
             }
           }
           return Column(
@@ -74,21 +73,20 @@ class _SplashViewBodyState extends State<SplashViewBody>
         });
   }
 
-  void navigateToAuthScreen() {
+  Widget navigateToAuthScreen() {
     Future.delayed(
       const Duration(seconds: 2),
-      () {
-        Navigator.of(context).pushNamed(AppRoutes.authScreen);
-      },
+    );
+    return BlocProvider<AuthCubit>(
+      create: (context) => AuthCubit(getIt.get<AuthRepo>()),
+      child: const AuthScreen(),
     );
   }
 
-  void navigateToBottomNavBar() {
+  Widget navigateToBottomNavBar() {
     Future.delayed(
       const Duration(seconds: 2),
-      () {
-        Navigator.of(context).pushNamed(AppRoutes.bottomNavBar);
-      },
     );
+    return const BottomNavbar();
   }
 }

@@ -14,4 +14,14 @@ class AppStrings {
 
   ///profile_screen
  static const String profilePhoto = 'https://talksport.com/wp-content/uploads/sites/5/2022/11/neymar-brazil-poses-official-fifa-776985045.jpg?strip=all&quality=100&w=1080&h=1080&crop=1';
+
+ ///Home_screen
+ static const String streetClothes = 'Street Clothes';
+ static const String sale = 'sale';
+ static const String superSummerSale = 'Super Summer Sale';
+ static const String noDataAvailable = 'No Data Available!';
+ static const String news = 'New';
+ static const String newProducts = 'new products';
+ static const String viewAll = 'View all';
+
 }

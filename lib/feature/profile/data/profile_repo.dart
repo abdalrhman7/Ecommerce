@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/wep_services/auth_wep_services.dart';
+import 'package:e_commerce/core/wep_services/firebase_auth_services.dart';
 
 class ProfileRepo{
  final AuthWebServices authWebServices;

@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class SplashRepo{
- final AuthWebServices authWebServices;
+ final FirebaseAuthServices authWebServices;
 
   SplashRepo(this.authWebServices);
 

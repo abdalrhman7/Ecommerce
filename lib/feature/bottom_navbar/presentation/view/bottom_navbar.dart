@@ -1,3 +1,5 @@
+import 'package:e_commerce/feature/cart/business_logic/cart_cubit.dart';
+import 'package:e_commerce/feature/cart/data/repo/cart_repo.dart';
 import 'package:e_commerce/feature/home_screen/business_logic/get_products_cubit.dart';
 import 'package:e_commerce/feature/home_screen/data/repo/home_screen_repo.dart';
 import 'package:e_commerce/feature/profile/presentation/view/profile_screen.dart';
@@ -25,9 +27,16 @@ class _BottomNavbarState extends State<BottomNavbar> {
   List<Widget> _buildScreens() {
     return [
       blocProviderHomeScreen(),
-      const CartScreen(),
+      blocProviderCartScreen(),
       blocProviderProfileScreen(),
     ];
+  }
+
+  Widget blocProviderCartScreen() {
+    return BlocProvider<CartCubit>(
+      create: (context) => CartCubit(getIt.get<CartRepo>()),
+      child: const CartScreen(),
+    );
   }
 
   Widget blocProviderHomeScreen() {

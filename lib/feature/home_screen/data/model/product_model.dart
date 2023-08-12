@@ -7,7 +7,7 @@ class Product {
   final String imgUrl;
   final int? discountValue;
   final String category;
-  final int? rate;
+  final bool? isNew;
 
   Product({
     required this.id,
@@ -16,7 +16,7 @@ class Product {
     required this.imgUrl,
     this.discountValue,
     this.category = 'Other',
-    this.rate,
+    required this.isNew,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,7 +27,7 @@ class Product {
       'imgUrl': imgUrl,
       'discountValue': discountValue,
       'category': category,
-      'rate': rate,
+      'isNew': isNew,
     };
   }
 
@@ -39,60 +39,60 @@ class Product {
       imgUrl: map['imgUrl'] as String,
       discountValue: map['discountValue'] as int,
       category: map['category'] as String,
-      rate: map['rate'] as int,
+      isNew: map['isNew'] as bool,
     );
   }
 }
 
 
 
-List<Product> dummyProducts = [
-  Product(
-    id: '1',
-    title: 'T-shirt',
-    price: 150,
-    imgUrl: AppAssets.tempProductAsset1,
-    category: 'Clothes',
-    discountValue: 20,
-  ),
-  Product(
-    id: '1',
-    title: 'T-shirt',
-    price: 300,
-    imgUrl: AppAssets.tempProductAsset1,
-    category: 'Clothes',
-    discountValue: 20,
-  ),
-  Product(
-    id: '1',
-    title: 'T-shirt',
-    price: 300,
-    imgUrl: AppAssets.tempProductAsset1,
-    category: 'Clothes',
-    discountValue: 20,
-  ),
-  Product(
-    id: '1',
-    title: 'T-shirt',
-    price: 300,
-    imgUrl: AppAssets.tempProductAsset1,
-    category: 'Clothes',
-    discountValue: 20,
-  ),
-  Product(
-    id: '1',
-    title: 'T-shirt',
-    price: 300,
-    imgUrl: AppAssets.tempProductAsset1,
-    category: 'Clothes',
-    discountValue: 20,
-  ),
-  Product(
-    id: '1',
-    title: 'T-shirt',
-    price: 300,
-    imgUrl: AppAssets.tempProductAsset1,
-    category: 'Clothes',
-    discountValue: 20,
-  ),
-];
+// List<Product> dummyProducts = [
+//   Product(
+//     id: '1',
+//     title: 'T-shirt',
+//     price: 150,
+//     imgUrl: AppAssets.tempProductAsset1,
+//     category: 'Clothes',
+//     discountValue: 20,
+//   ),
+//   Product(
+//     id: '1',
+//     title: 'T-shirt',
+//     price: 300,
+//     imgUrl: AppAssets.tempProductAsset1,
+//     category: 'Clothes',
+//     discountValue: 20,
+//   ),
+//   Product(
+//     id: '1',
+//     title: 'T-shirt',
+//     price: 300,
+//     imgUrl: AppAssets.tempProductAsset1,
+//     category: 'Clothes',
+//     discountValue: 20,
+//   ),
+//   Product(
+//     id: '1',
+//     title: 'T-shirt',
+//     price: 300,
+//     imgUrl: AppAssets.tempProductAsset1,
+//     category: 'Clothes',
+//     discountValue: 20,
+//   ),
+//   Product(
+//     id: '1',
+//     title: 'T-shirt',
+//     price: 300,
+//     imgUrl: AppAssets.tempProductAsset1,
+//     category: 'Clothes',
+//     discountValue: 20,
+//   ),
+//   Product(
+//     id: '1',
+//     title: 'T-shirt',
+//     price: 300,
+//     imgUrl: AppAssets.tempProductAsset1,
+//     category: 'Clothes',
+//     discountValue: 20,
+//   ),
+// ];

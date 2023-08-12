@@ -1,7 +1,7 @@
 
 import 'package:e_commerce/feature/home_screen/data/model/product_model.dart';
 
-import '../../../../core/wep_services/FirestoreServices.dart';
+import '../../../../core/wep_services/firestore_services.dart';
 import '../../../../core/wep_services/api_path.dart';
 
 class HomeScreenRepo{
@@ -18,5 +18,6 @@ class HomeScreenRepo{
   Stream<List<Product>> newProductsStream() => firestoreServices.collectionsStream(
     path: ApiPath.products(),
     builder: (data, documentId) => Product.fromMap(data!, documentId),
+    queryBuilder: (query) => query.where('isNew', isEqualTo: true),
   );
 }

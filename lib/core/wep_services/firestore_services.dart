@@ -9,13 +9,13 @@ class FirestoreServices {
     required Map<String, dynamic> data,
   }) async {
     final reference = _fireStore.doc(path);
-    debugPrint('Request Data : $data ');
+    //debugPrint('Request Data : $data ');
     await reference.set(data);
   }
 
   Future<void> deleteData({required String path}) async {
     final reference = _fireStore.doc(path);
-    debugPrint('Request Data : $path ');
+    //debugPrint('Request Data : $path ');
     reference.delete();
   }
 

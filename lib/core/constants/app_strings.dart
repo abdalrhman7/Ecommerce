@@ -17,7 +17,7 @@ class AppStrings {
 
  ///Home_screen
  static const String streetClothes = 'Street Clothes';
- static const String sale = 'sale';
+ static const String sale = 'Sale';
  static const String superSummerSale = 'Super Summer Sale';
  static const String noDataAvailable = 'No Data Available!';
  static const String news = 'New';

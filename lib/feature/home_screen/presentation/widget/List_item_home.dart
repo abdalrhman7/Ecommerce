@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/app_route/routes.dart';
 import 'package:e_commerce/core/constants/app_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,10 +9,12 @@ import '../../data/model/product_model.dart';
 
 class ListItemHome extends StatelessWidget {
   final Product product;
+  bool isNew = false;
 
-  const ListItemHome({
+  ListItemHome({
     Key? key,
     required this.product,
+    required this.isNew,
   }) : super(key: key);
 
   @override
@@ -19,7 +22,12 @@ class ListItemHome extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context, rootNavigator: true).pushNamed(
+          AppRoutes.productDetails,
+          arguments: {'product': product},
+        );
+      },
       child: Stack(
         children: [
           Stack(
@@ -33,30 +41,30 @@ class ListItemHome extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              if(product.discountValue != null)
-              Padding(
-                padding: EdgeInsets.all(AppPadding.p8),
-                child: SizedBox(
-                  width: 50,
-                  height: 25,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      color: Colors.red,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Center(
-                        child: Text(
-                          '${product.discountValue}%',
-                          style:
-                              Style.textStyle12.copyWith(color: Colors.white),
+              if (isNew == false)
+                Padding(
+                  padding: EdgeInsets.all(AppPadding.p8),
+                  child: SizedBox(
+                    width: 50,
+                    height: 25,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
+                        color: Colors.red,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Center(
+                          child: Text(
+                            '${product.discountValue}%',
+                            style:
+                                Style.textStyle12.copyWith(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
           Positioned(

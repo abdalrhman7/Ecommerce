@@ -3,8 +3,9 @@ import 'package:e_commerce/feature/auth/business_logic/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/data/repo/auth_repo.dart';
 import 'package:e_commerce/feature/auth/presentation/view/auth_screen.dart';
 import 'package:e_commerce/feature/cart/presentation/view/cart_screen.dart';
-import 'package:e_commerce/feature/profile/business_logic/profile_cubit.dart';
-import 'package:e_commerce/feature/profile/data/profile_repo.dart';
+import 'package:e_commerce/feature/product_details/business_logic/add_to_cart_cubit.dart';
+import 'package:e_commerce/feature/product_details/data/repo/add_to_cart_repo.dart';
+
 import 'package:e_commerce/feature/profile/presentation/view/profile_screen.dart';
 import 'package:e_commerce/feature/splash/business_logic/splash_cubit.dart';
 import 'package:e_commerce/feature/splash/data/repo/repo.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/material.dart';
 
 import '../../feature/bottom_navbar/presentation/view/bottom_navbar.dart';
 import '../../feature/home_screen/presentation/view/home_screen.dart';
+import '../../feature/product_details/presentation/view/product_details_screen.dart';
 import '../../feature/splash/presentation/view/splash_screen.dart';
 import '../../injection.dart';
 
@@ -31,7 +33,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case AppRoutes.bottomNavBar:
       return MaterialPageRoute(
         builder: (_) =>
-            const BottomNavbar(),
+        const BottomNavbar(),
         settings: settings,
       );
 
@@ -50,7 +52,19 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case AppRoutes.profileScreen:
       return MaterialPageRoute(
         builder: (_) =>
-            const ProfileScreen(),
+        const ProfileScreen(),
+        settings: settings,
+      );
+
+    case AppRoutes.productDetails:
+      final args = settings.arguments as Map<String, dynamic>;
+      final product = args['product'];
+      return MaterialPageRoute(
+        builder: (_) =>
+            BlocProvider(
+              create: (context) => AddToCartCubit(getIt.get<AddToCartRepo>()),
+              child: ProductDetailsScreen(product: product),
+            ),
         settings: settings,
       );
 

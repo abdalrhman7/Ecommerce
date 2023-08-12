@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 
-class AuthWebServices {
+class FirebaseAuthServices {
   final _firebaseAuth = FirebaseAuth.instance;
 
   Future<User?> loginWithEmailAndPassword(String email, String password) async {
@@ -27,6 +27,8 @@ class AuthWebServices {
     );
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  User? get currentUser => _firebaseAuth.currentUser;
 
   Future<void> logout() async{
     await _firebaseAuth.signOut();

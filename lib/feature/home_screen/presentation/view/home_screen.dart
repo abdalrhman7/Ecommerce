@@ -48,81 +48,77 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           SizedBox(height: AppSize.s25Height),
-          StreamBuilder<List<Product>>(
-              stream: null,
-              builder: (context, snapshot) {
-                return Column(
-                  children: [
-                    buildSaleWidget(
-                        AppStrings.sale, AppStrings.superSummerSale),
-                    SizedBox(height: AppSize.s10Height),
-                    StreamBuilder<List<Product>>(
-                        stream: BlocProvider.of<GetProductsCubit>(context)
-                            .salesProductsStream(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.active) {
-                            final products = snapshot.data;
-                            if (products == null || products.isEmpty) {
-                              return const Center(
-                                child: Text(AppStrings.noDataAvailable),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppPadding.p8),
+            child: Column(
+              children: [
+                buildSaleWidget(AppStrings.sale, AppStrings.superSummerSale),
+                SizedBox(height: AppSize.s10Height),
+                StreamBuilder<List<Product>>(
+                    stream: BlocProvider.of<GetProductsCubit>(context)
+                        .salesProductsStream(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.active) {
+                        final products = snapshot.data;
+                        if (products == null || products.isEmpty) {
+                          return const Center(
+                            child: Text(AppStrings.noDataAvailable),
+                          );
+                        }
+                        return SizedBox(
+                          height: 275.h,
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: products.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.all(AppPadding.p8),
+                                child: ListItemHome(
+                                    product: products[index], isNew: false),
                               );
-                            }
-                            return SizedBox(
-                              height: 275.h,
-                              child: ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: products.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.all(AppPadding.p8),
-                                    child:
-                                        ListItemHome(product: products[index]),
-                                  );
-                                },
-                              ),
-                            );
-                          }
-                          return const CustomCircularProgressIndicator();
-                        }),
-                    buildSaleWidget(AppStrings.news, AppStrings.newProducts),
-                    SizedBox(height: AppSize.s10Height),
-                    StreamBuilder<List<Product>>(
-                        stream: BlocProvider.of<GetProductsCubit>(context)
-                            .newProductsStream(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.active) {
-                            final products = snapshot.data;
-                            if (products == null || products.isEmpty) {
-                              return const Center(
-                                child: Text(AppStrings.noDataAvailable),
+                            },
+                          ),
+                        );
+                      }
+                      return const CustomCircularProgressIndicator();
+                    }),
+                buildSaleWidget(AppStrings.news, AppStrings.newProducts),
+                SizedBox(height: AppSize.s10Height),
+                StreamBuilder<List<Product>>(
+                    stream: BlocProvider.of<GetProductsCubit>(context)
+                        .newProductsStream(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.active) {
+                        final products = snapshot.data;
+                        if (products == null || products.isEmpty) {
+                          return const Center(
+                            child: Text(AppStrings.noDataAvailable),
+                          );
+                        }
+                        return SizedBox(
+                          height: 275.h,
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: products.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.all(AppPadding.p8),
+                                child: ListItemHome(
+                                    product: products[index], isNew: true),
                               );
-                            }
-                            return SizedBox(
-                              height: 275.h,
-                              child: ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: products.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.all(AppPadding.p8),
-                                    child:
-                                        ListItemHome(product: products[index]),
-                                  );
-                                },
-                              ),
-                            );
-                          }
-                          return const CustomCircularProgressIndicator();
-                        }),
-                  ],
-                );
-              }),
+                            },
+                          ),
+                        );
+                      }
+                      return const CustomCircularProgressIndicator();
+                    }),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -140,7 +136,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Style.textStyle28,
+                style: Style.textStyle28.copyWith(fontWeight: FontWeight.bold),
               ),
               Text(AppStrings.viewAll, style: Style.textStyle14),
             ],

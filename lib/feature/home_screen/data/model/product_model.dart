@@ -1,22 +1,16 @@
-import '../../../../core/constants/app_assets.dart';
+import '../../../cart/data/model/cart_model.dart';
 
-class Product {
-  final String id;
-  final String title;
-  final int price;
-  final String imgUrl;
+class Product extends ProductModel {
   final int? discountValue;
   final String category;
-  final bool? isNew;
 
   Product({
-    required this.id,
-    required this.title,
-    required this.price,
-    required this.imgUrl,
+    required super.id,
+    required super.title,
+    required super.price,
+    required super.imgUrl,
     this.discountValue,
     this.category = 'Other',
-    required this.isNew,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,7 +21,6 @@ class Product {
       'imgUrl': imgUrl,
       'discountValue': discountValue,
       'category': category,
-      'isNew': isNew,
     };
   }
 
@@ -39,60 +32,6 @@ class Product {
       imgUrl: map['imgUrl'] as String,
       discountValue: map['discountValue'] as int,
       category: map['category'] as String,
-      isNew: map['isNew'] as bool,
     );
   }
 }
-
-
-
-// List<Product> dummyProducts = [
-//   Product(
-//     id: '1',
-//     title: 'T-shirt',
-//     price: 150,
-//     imgUrl: AppAssets.tempProductAsset1,
-//     category: 'Clothes',
-//     discountValue: 20,
-//   ),
-//   Product(
-//     id: '1',
-//     title: 'T-shirt',
-//     price: 300,
-//     imgUrl: AppAssets.tempProductAsset1,
-//     category: 'Clothes',
-//     discountValue: 20,
-//   ),
-//   Product(
-//     id: '1',
-//     title: 'T-shirt',
-//     price: 300,
-//     imgUrl: AppAssets.tempProductAsset1,
-//     category: 'Clothes',
-//     discountValue: 20,
-//   ),
-//   Product(
-//     id: '1',
-//     title: 'T-shirt',
-//     price: 300,
-//     imgUrl: AppAssets.tempProductAsset1,
-//     category: 'Clothes',
-//     discountValue: 20,
-//   ),
-//   Product(
-//     id: '1',
-//     title: 'T-shirt',
-//     price: 300,
-//     imgUrl: AppAssets.tempProductAsset1,
-//     category: 'Clothes',
-//     discountValue: 20,
-//   ),
-//   Product(
-//     id: '1',
-//     title: 'T-shirt',
-//     price: 300,
-//     imgUrl: AppAssets.tempProductAsset1,
-//     category: 'Clothes',
-//     discountValue: 20,
-//   ),
-// ];

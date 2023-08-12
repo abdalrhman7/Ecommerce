@@ -1,20 +1,26 @@
+abstract class ProductModel {
+  String id;
+  String title;
+  int price;
+  String imgUrl;
+  ProductModel({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.imgUrl,
+  });
+}
 
-class CartModel {
-  final String id;
-  final String? productId;
-  final String title;
-  final int price;
+class CartModel extends ProductModel {
   final int quantity;
-  final String imgUrl;
   final String size;
 
   CartModel({
-    required this.id,
-     this.productId,
-    required this.title,
-    required this.price,
+    required super.id,
+    required super.title,
+    required super.price,
+    required super.imgUrl,
     required this.quantity,
-    required this.imgUrl,
     required this.size,
   });
 

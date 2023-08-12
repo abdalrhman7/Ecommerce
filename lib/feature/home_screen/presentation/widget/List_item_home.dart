@@ -132,8 +132,9 @@ class ListItemHome extends StatelessWidget {
                 const SizedBox(height: 6.0),
                 Text(
                   '${product.price}',
-                  style:
-                      Style.textStyle12.copyWith(color: Colors.grey.shade600),
+                  style: Style.textStyle12.copyWith(
+                    color: Colors.grey.shade600,
+                  ),
                 )
               ],
             ),

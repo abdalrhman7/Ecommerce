@@ -1,1 +1,1 @@
-String documentIdFromLocalData() => DateTime.now().toIso8601String();
+String generateUniqueId() => DateTime.now().toIso8601String();

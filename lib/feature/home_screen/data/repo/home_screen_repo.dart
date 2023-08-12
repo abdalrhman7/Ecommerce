@@ -18,6 +18,6 @@ class HomeScreenRepo{
   Stream<List<Product>> newProductsStream() => firestoreServices.collectionsStream(
     path: ApiPath.products(),
     builder: (data, documentId) => Product.fromMap(data!, documentId),
-    queryBuilder: (query) => query.where('isNew', isEqualTo: true),
+    queryBuilder: (query) => query.where('discountValue', isEqualTo: 0),
   );
 }

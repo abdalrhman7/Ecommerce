@@ -2,18 +2,15 @@ import 'package:e_commerce/core/app_route/routes.dart';
 import 'package:e_commerce/feature/auth/business_logic/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/data/repo/auth_repo.dart';
 import 'package:e_commerce/feature/auth/presentation/view/auth_screen.dart';
-import 'package:e_commerce/feature/cart/presentation/view/cart_screen.dart';
 import 'package:e_commerce/feature/product_details/business_logic/add_to_cart_cubit.dart';
 import 'package:e_commerce/feature/product_details/data/repo/add_to_cart_repo.dart';
 
-import 'package:e_commerce/feature/profile/presentation/view/profile_screen.dart';
 import 'package:e_commerce/feature/splash/business_logic/splash_cubit.dart';
 import 'package:e_commerce/feature/splash/data/repo/repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/bottom_navbar/presentation/view/bottom_navbar.dart';
-import '../../feature/home_screen/presentation/view/home_screen.dart';
 import '../../feature/product_details/presentation/view/product_details_screen.dart';
 import '../../feature/splash/presentation/view/splash_screen.dart';
 import '../../injection.dart';
@@ -37,24 +34,24 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         settings: settings,
       );
 
-    case AppRoutes.homeScreen:
-      return MaterialPageRoute(
-        builder: (_) => const HomeScreen(),
-        settings: settings,
-      );
+    // case AppRoutes.homeScreen:
+    //   return MaterialPageRoute(
+    //     builder: (_) => const HomeScreen(),
+    //     settings: settings,
+    //   );
 
-    case AppRoutes.cartScreen:
-      return MaterialPageRoute(
-        builder: (_) => const CartScreen(),
-        settings: settings,
-      );
+    // case AppRoutes.cartScreen:
+    //   return MaterialPageRoute(
+    //     builder: (_) => const CartScreen(),
+    //     settings: settings,
+    //   );
 
-    case AppRoutes.profileScreen:
-      return MaterialPageRoute(
-        builder: (_) =>
-        const ProfileScreen(),
-        settings: settings,
-      );
+    // case AppRoutes.profileScreen:
+    //   return MaterialPageRoute(
+    //     builder: (_) =>
+    //     const ProfileScreen(),
+    //     settings: settings,
+    //   );
 
     case AppRoutes.productDetails:
       final args = settings.arguments as Map<String, dynamic>;

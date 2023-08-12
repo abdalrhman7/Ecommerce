@@ -1,5 +1,8 @@
+import 'package:e_commerce/core/constants/app_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class SocialMediaButton extends StatelessWidget {
   const SocialMediaButton({
@@ -14,17 +17,17 @@ class SocialMediaButton extends StatelessWidget {
     return InkWell(
       onTap: onPress,
       child: Container(
-        height: 70,
-        width: 70,
+        height: AppSize.s60Height,
+        width: AppSize.s60Width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(16.0).w,
           color: Colors.white,
         ),
         child: Center(
           child: SvgPicture.asset(
             iconName,
-            width: 40.0,
-            height: 50.0,
+            width: AppSize.s40Width,
+            height: AppSize.s40Height,
           ),
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/constants/app_value.dart';
-import 'package:e_commerce/core/widget/main_dialog.dart';
+import 'package:e_commerce/core/function/main_dialog.dart';
 import 'package:e_commerce/feature/auth/business_logic/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

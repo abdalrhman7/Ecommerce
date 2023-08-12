@@ -53,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                         style: Style.textStyle18,
                       ),
                       Text(
-                        'abdalrhman@gmail.com',
+                        BlocProvider.of<ProfileCubit>(context).getProfileInfo()!.email!,
                         style: Style.textStyle16
                             .copyWith(color: Colors.grey.shade700),
                       ),

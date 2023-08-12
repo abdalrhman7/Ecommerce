@@ -3,9 +3,10 @@ import 'package:e_commerce/feature/cart/data/model/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_value.dart';
 import '../../../../core/constants/text_style.dart';
-import '../../../../core/widget/main_snack_bar.dart';
+import '../../../../core/function/main_snack_bar.dart';
 
 class CartListItem extends StatelessWidget {
   const CartListItem({super.key, required this.cartItem});
@@ -45,9 +46,9 @@ class CartListItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      buildRichText(context, 'Color: ', 'black'),
+                      buildRichText(context, AppStrings.color, 'black'),
                       const SizedBox(width: 8.0),
-                      buildRichText(context, 'Size: ', cartItem.size),
+                      buildRichText(context, AppStrings.size, cartItem.size),
                     ],
                   )
                 ],
@@ -62,7 +63,7 @@ class CartListItem extends StatelessWidget {
                         onPressed: () {
                           BlocProvider.of<CartCubit>(context)
                             .deleteItemFromCart(cartItem);
-                          mainSnackBar(context ,'Item Deleted');
+                          mainSnackBar(context ,AppStrings.itemDeleted);
                         }),
                     Text('${cartItem.price}\$')
                   ],

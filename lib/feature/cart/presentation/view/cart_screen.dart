@@ -13,6 +13,7 @@ import '../widget/cart_list_item.dart';
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     int totalPrice = 0;
@@ -33,7 +34,7 @@ class CartScreen extends StatelessWidget {
             ),
             SizedBox(height: AppSize.s20Height),
             Text(
-              'My Cart',
+              AppStrings.myCart,
               style: Style.textStyle28.copyWith(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: AppSize.s16Height),
@@ -73,7 +74,7 @@ class CartScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Total Amount:',
+                  AppStrings.totalAmount,
                   style:
                       Style.textStyle16.copyWith(color: Colors.grey.shade500),
                 ),
@@ -88,7 +89,7 @@ class CartScreen extends StatelessWidget {
               height: AppSize.s18Height,
             ),
             MainButton(
-              text: 'checkout',
+              text: AppStrings.checkout,
               onTap: () {},
               hasCircularBorder: true,
             )

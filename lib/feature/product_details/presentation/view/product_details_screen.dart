@@ -9,8 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/document_id.dart';
 import '../../../../core/widget/drop_down_menu.dart';
 import '../../../../core/widget/main_button.dart';
-import '../../../../core/widget/main_dialog.dart';
-import '../../../../core/widget/main_snack_bar.dart';
+import '../../../../core/function/main_dialog.dart';
+import '../../../../core/function/main_snack_bar.dart';
 import '../../data/model/add_to_cart_model.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -143,10 +143,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   Future<void> _addToCart() async {
     final addToCartProduct = AddToCartModel(
-      id: documentIdFromLocalData(),
+      id: generateUniqueId(),
       title: widget.product.title,
       price: widget.product.price,
-      productId: widget.product.id,
       imgUrl: widget.product.imgUrl,
       size: dropdownValue!,
     );

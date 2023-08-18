@@ -54,4 +54,12 @@ class AuthRepo {
   Future<void> logout() async {
     await authWepServices.logout();
   }
+
+  User? get getCurrentUser {
+    final currentUserUid =  authWepServices.currentUser ;
+    if (currentUserUid != null){
+      return currentUserUid;
+    }
+    return null;
+  }
 }

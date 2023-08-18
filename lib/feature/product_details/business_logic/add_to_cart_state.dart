@@ -1,6 +1,6 @@
-part of 'add_to_cart_cubit.dart';
+part of 'product_details_cubit.dart';
 
 @immutable
-abstract class AddToCartState {}
+abstract class ProductDetailsState {}
 
-class AddToCartInitial extends AddToCartState {}
+class AddToCartInitial extends ProductDetailsState {}

@@ -3,21 +3,22 @@ import 'package:e_commerce/feature/profile/data/profile_repo.dart';
 import 'package:meta/meta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../auth/data/repo/auth_repo.dart';
 
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit(this.profileRepo) : super(ProfileInitial());
+  ProfileCubit(this.authRepo) : super(ProfileInitial());
 
-  final ProfileRepo profileRepo;
+  final AuthRepo authRepo;
 
-  User? getProfileInfo(){
-    return profileRepo.getProfileInfo();
+  String? getProfileInfo() {
+    return authRepo.getCurrentUser!.email;
   }
 
   Future<void> logout() async {
     emit(ProfileLogoutLoadingState());
-    await profileRepo.logout();
+    await authRepo.logout();
     emit(ProfileLogoutSuccessState());
   }
 }

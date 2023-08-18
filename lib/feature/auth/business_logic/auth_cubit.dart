@@ -3,6 +3,7 @@ import 'package:e_commerce/feature/auth/data/repo/auth_repo.dart';
 import 'package:meta/meta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -26,6 +27,10 @@ class AuthCubit extends Cubit<AuthState> {
     emit(SignInWithGoogleLoadingState());
     var result = await authRepo.signInWithGoogle();
     result.fold((l) => emit(SignInWithGoogleFailureState(l.message)) , (r) => emit(SignInWithGoogleSuccessState()));
+  }
+
+  User? getCurrentUser(){
+    return authRepo.getCurrentUser;
   }
 
   Future<void> logout() async {

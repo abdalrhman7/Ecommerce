@@ -7,6 +7,7 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_value.dart';
 import '../../../../core/constants/text_style.dart';
 import '../../../../core/function/main_snack_bar.dart';
+import '../../../../core/widget/buildRichText.dart';
 
 class CartListItem extends StatelessWidget {
   const CartListItem({super.key, required this.cartItem});
@@ -39,6 +40,7 @@ class CartListItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: AppSize.s20Height),
                   Text(
                     cartItem.title,
                     style:
@@ -46,9 +48,11 @@ class CartListItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      buildRichText(context, AppStrings.color, 'black'),
-                      const SizedBox(width: 8.0),
-                      buildRichText(context, AppStrings.size, cartItem.size),
+                      const BuildRichText(
+                          title: AppStrings.color, description: 'black'),
+                      SizedBox(width: AppSize.s8Width),
+                      BuildRichText(
+                          title: AppStrings.size, description: cartItem.size),
                     ],
                   )
                 ],
@@ -62,8 +66,8 @@ class CartListItem extends StatelessWidget {
                         icon: const Icon(Icons.more_vert),
                         onPressed: () {
                           BlocProvider.of<CartCubit>(context)
-                            .deleteItemFromCart(cartItem);
-                          mainSnackBar(context ,AppStrings.itemDeleted);
+                              .deleteItemFromCart(cartItem);
+                          mainSnackBar(context, AppStrings.itemDeleted);
                         }),
                     Text('${cartItem.price}\$')
                   ],

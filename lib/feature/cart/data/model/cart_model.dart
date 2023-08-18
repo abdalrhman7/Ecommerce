@@ -1,4 +1,4 @@
-abstract class ProductModel {
+ class ProductModel {
   String id;
   String title;
   int price;
@@ -9,6 +9,27 @@ abstract class ProductModel {
     required this.price,
     required this.imgUrl,
   });
+
+  factory ProductModel.fromMap(Map<String, dynamic> map, String documentId) {
+    return CartModel(
+      id: documentId,
+      title: map['title'] as String,
+      price: map['price'] as int,
+      imgUrl: map['imgUrl'] as String,
+      size: map['size'] as String,
+      quantity: map['quantity'] as int,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'price': price,
+      'imgUrl': imgUrl,
+    };
+  }
+
 }
 
 class CartModel extends ProductModel {
@@ -24,6 +45,8 @@ class CartModel extends ProductModel {
     required this.size,
   });
 
+
+   @override
   factory CartModel.fromMap(Map<String, dynamic> map, String documentId) {
     return CartModel(
       id: documentId,

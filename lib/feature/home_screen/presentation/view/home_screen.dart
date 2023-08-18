@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                           );
                         }
                         return SizedBox(
-                          height: 275.h,
+                          height: AppSize.s275Height,
                           child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,

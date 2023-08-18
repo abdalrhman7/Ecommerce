@@ -6,21 +6,17 @@ import '../../../../core/wep_services/firestore_services.dart';
 
 class CartRepo {
   final FirestoreServices firestoreServices;
-  final FirebaseAuthServices firebaseAuthServices;
 
-  CartRepo(this.firestoreServices, this.firebaseAuthServices);
+  CartRepo(this.firestoreServices);
 
-  String get getCurrentUserUid => firebaseAuthServices.currentUser!.uid;
-
-  Stream<List<CartModel>> getAllCartItems() =>
+  Stream<List<CartModel>> getAllCartItems(String? uid) =>
       firestoreServices.collectionsStream(
-        path: ApiPath.myProductsCart(getCurrentUserUid),
+        path: ApiPath.myProductsCart(uid!),
         builder: (data, documentId) => CartModel.fromMap(data!, documentId),
       );
 
-
-  Future<void> deleteItemFromCart(CartModel cartItem) async {
+  Future<void> deleteItemFromCart(ProductModel cartItem, String? uid) async {
     await firestoreServices.deleteData(
-        path: ApiPath.addToCart(getCurrentUserUid, cartItem.id));
+        path: ApiPath.addToCart(uid!, cartItem.id));
   }
 }

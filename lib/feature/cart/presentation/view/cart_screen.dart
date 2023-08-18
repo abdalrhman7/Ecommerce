@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/widget/CustomCircularProgressIndicator.dart';
+import '../../../../core/widget/search.dart';
 import '../widget/cart_list_item.dart';
 
 class CartScreen extends StatelessWidget {
@@ -23,15 +24,7 @@ class CartScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: AppPadding.p14),
-                  child: const Icon(Icons.search),
-                ),
-              ],
-            ),
+            const SearchBarWidget(),
             SizedBox(height: AppSize.s20Height),
             Text(
               AppStrings.myCart,
@@ -54,7 +47,7 @@ class CartScreen extends StatelessWidget {
                       print(totalPrice);
                     }
                     return SizedBox(
-                      height: AppSize.s380Height,
+                      height: AppSize.s400Height,
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         itemCount: cartItems.length,
@@ -68,7 +61,7 @@ class CartScreen extends StatelessWidget {
                   return const CustomCircularProgressIndicator();
                 }),
             SizedBox(
-              height: AppSize.s18Height,
+              height: AppSize.s10Height,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +79,7 @@ class CartScreen extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: AppSize.s18Height,
+              height: AppSize.s16Height,
             ),
             MainButton(
               text: AppStrings.checkout,
@@ -99,3 +92,5 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
+
+

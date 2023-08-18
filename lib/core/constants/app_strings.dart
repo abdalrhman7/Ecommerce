@@ -25,7 +25,7 @@ class AppStrings {
  static const String viewAll = 'View all';
 
  /// Cart_Screen
-  static const String myCart = 'myCart';
+  static const String myCart = 'MyCart';
   static const String totalAmount = 'Total Amount:';
   static const String checkout = 'checkout';
   static const String color = 'Color: ';

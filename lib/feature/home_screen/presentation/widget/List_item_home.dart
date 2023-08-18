@@ -2,9 +2,9 @@ import 'package:e_commerce/core/app_route/routes.dart';
 import 'package:e_commerce/core/constants/app_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../../core/constants/text_style.dart';
+import '../../../../core/widget/rating-bar_indicator.dart';
 import '../../data/model/product_model.dart';
 
 class ListItemHome extends StatelessWidget {
@@ -102,15 +102,7 @@ class ListItemHome extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    RatingBarIndicator(
-                      itemSize: 22.w,
-                      rating: 4.0,
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      direction: Axis.horizontal,
-                    ),
+                    const RatingBarIndicatorWidget(size: 22),
                     const SizedBox(width: 4.0),
                     Text(
                       '(50)',

@@ -13,6 +13,7 @@ class Product extends ProductModel {
     this.category = 'Other',
   });
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -24,6 +25,7 @@ class Product extends ProductModel {
     };
   }
 
+  @override
   factory Product.fromMap(Map<String, dynamic> map, String documentId) {
     return Product(
       id: documentId,

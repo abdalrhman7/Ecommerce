@@ -1,5 +1,4 @@
 import 'package:e_commerce/core/constants/text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MainDialog {

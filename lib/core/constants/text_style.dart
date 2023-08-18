@@ -13,6 +13,16 @@ TextStyle appStyle(
 
 class Style {
 
+  static final textStyle8 = appStyle(
+    size: 8,
+    fw: FontWeight.normal,
+  );
+
+  static final textStyle10 = appStyle(
+    size: 10,
+    fw: FontWeight.normal,
+  );
+
   static final textStyle12 = appStyle(
     size: 12,
     fw: FontWeight.normal,

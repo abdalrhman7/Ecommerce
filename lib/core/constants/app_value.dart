@@ -33,6 +33,8 @@ class AppSize {
   static final double s25Width = 25.0.w;
   static final double s30Height = 30.0.h;
   static final double s30Width = 30.0.w;
+  static final double s35Height = 35.0.h;
+  static final double s35Width = 35.0.w;
   static final double s40Height = 40.0.h;
   static final double s40Width = 40.0.w;
   static final double s45Height = 45.0.h;
@@ -58,6 +60,8 @@ class AppSize {
   static final double s200Width = 200.0.w;
   static final double s260Height = 260.0.h;
   static final double s260Width = 260.0.w;
+  static final double s275Height = 275.0.h;
+  static final double s275Width = 275.0.w;
   static final double s280Height = 280.0.h;
   static final double s280Width = 280.0.w;
   static final double s300Height = 300.0.h;
@@ -65,5 +69,8 @@ class AppSize {
   static final double s350Height = 350.0.h;
   static final double s350Width = 350.0.w;
   static final double s380Height = 380.0.h;
-  static final double s380Width = 350.0.w;
+  static final double s380Width = 380.0.w;
+  static final double s400Height = 400.0.h;
+  static final double s400Width =   400.0.w;
+
 }

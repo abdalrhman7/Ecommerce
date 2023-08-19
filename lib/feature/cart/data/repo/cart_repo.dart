@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/feature/cart/data/model/cart_model.dart';
 
 import '../../../../core/wep_services/api_path.dart';
-import '../../../../core/wep_services/firebase_auth_services.dart';
 import '../../../../core/wep_services/firestore_services.dart';
 
 class CartRepo {
@@ -10,20 +8,11 @@ class CartRepo {
 
   CartRepo(this.firestoreServices);
 
-  // Stream<List<CartModel>> getAllCartItems(String? uid) =>
-  //     firestoreServices.collectionsStream(
-  //       path: ApiPath.myProductsCart(uid!),
-  //       builder: (data, documentId) => CartModel.fromMap(data!, documentId),
-  //     );
-
-  Future<List<CartModel>> getAllCartItems(String? uid) async {
-    return await firestoreServices.getData(
+  Stream<List<CartModel>> getAllCartItems(String? uid) =>
+      firestoreServices.collectionsStream(
         path: ApiPath.myProductsCart(uid!),
         builder: (data, documentId) => CartModel.fromMap(data!, documentId),
       );
-  }
-
-
 
   Future<void> deleteItemFromCart(ProductModel cartItem, String? uid) async {
     await firestoreServices.deleteData(

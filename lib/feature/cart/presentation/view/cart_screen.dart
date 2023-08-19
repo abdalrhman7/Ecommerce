@@ -11,24 +11,11 @@ import '../../../../core/widget/CustomCircularProgressIndicator.dart';
 import '../../../../core/widget/search.dart';
 import '../widget/cart_list_item.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
-  @override
-  void initState() {
-    BlocProvider.of<CartCubit>(context).getAllCartItems();
-   // BlocProvider.of<CartCubit>(context).getTotalPrice();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    //var cubit = BlocProvider.of<CartCubit>(context);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppPadding.p14),
@@ -42,25 +29,7 @@ class _CartScreenState extends State<CartScreen> {
               style: Style.textStyle28.copyWith(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: AppSize.s16Height),
-            BlocBuilder<CartCubit, CartState>(
-              builder: (context, state) {
-                if (state is GetAllCartSuccess) {
-                  final cartItems = state.cartItem;
-                  return SizedBox(
-                    height: AppSize.s400Height,
-                    child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: cartItems.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return CartListItem(cartItem: cartItems[index]);
-                      },
-                    ),
-                  );
-                }
-                return const CustomCircularProgressIndicator();
-              },
-            ),
+            buildGetAllCartProductWidget(context),
             SizedBox(
               height: AppSize.s10Height,
             ),
@@ -72,18 +41,7 @@ class _CartScreenState extends State<CartScreen> {
                   style:
                       Style.textStyle16.copyWith(color: Colors.grey.shade500),
                 ),
-                BlocBuilder<CartCubit, CartState>(
-                  builder: (context, state) {
-                    if (state is GetAllCartSuccess) {
-                      return Text(
-                        state.totalPrice.toString(),
-                        style: Style.textStyle18
-                            .copyWith(fontWeight: FontWeight.bold),
-                      );
-                    }
-                    return const CustomCircularProgressIndicator();
-                  },
-                )
+                buildGetTotalPriceWidget(context),
               ],
             ),
             SizedBox(
@@ -99,10 +57,45 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
   }
-}
 
-//
-// for (var price in cartItems) {
-// totalPrice += price.price;
-// print(totalPrice);
-// }
+  Widget buildGetAllCartProductWidget(BuildContext context) {
+    return StreamBuilder<List<CartModel>>(
+        stream: BlocProvider.of<CartCubit>(context).getAllCartItems(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            final cartItems = snapshot.data;
+
+            return SizedBox(
+              height: AppSize.s400Height,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: cartItems!.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return CartListItem(cartItem: cartItems[index]);
+                },
+              ),
+            );
+          }
+          return const CustomCircularProgressIndicator();
+        });
+  }
+
+  Widget buildGetTotalPriceWidget(BuildContext context) {
+    return StreamBuilder<List<CartModel>>(
+        stream: BlocProvider.of<CartCubit>(context).getAllCartItems(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            int totalPrice = 0;
+            for (var result in snapshot.data!) {
+              totalPrice += result.price;
+            }
+            return Text(
+              totalPrice.toString(),
+              style: Style.textStyle18.copyWith(fontWeight: FontWeight.bold),
+            );
+          }
+          return const CustomCircularProgressIndicator();
+        });
+  }
+}

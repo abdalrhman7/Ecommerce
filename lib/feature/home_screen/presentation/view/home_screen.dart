@@ -92,6 +92,7 @@ class HomeScreen extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.active) {
                         final products = snapshot.data;
+
                         if (products == null || products.isEmpty) {
                           return const Center(
                             child: Text(AppStrings.noDataAvailable),

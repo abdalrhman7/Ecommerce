@@ -50,4 +50,21 @@ class FirestoreServices {
       return result;
     });
   }
+
+  Future<List<T>> getData<T>(
+      {required String path,
+        required T Function(Map<String, dynamic>? data, String documentId)
+        builder}) async {
+    CollectionReference collectionReference = _fireStore.collection(path);
+    QuerySnapshot querySnapshot = await collectionReference.get();
+
+    List<QueryDocumentSnapshot> listDocs = querySnapshot.docs;
+
+    return listDocs.map((e) {
+      return builder(
+        e.data() as Map<String, dynamic>,
+        e.id,
+      );
+    }).toList();
+  }
 }

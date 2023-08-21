@@ -1,5 +1,4 @@
 import '../../../../core/wep_services/api_path.dart';
-import '../../../../core/wep_services/firebase_auth_services.dart';
 import '../../../../core/wep_services/firestore_services.dart';
 import '../../../cart/data/model/cart_model.dart';
 
@@ -8,11 +7,8 @@ import '../model/Product_details_model.dart';
 class ProductDetailsRepo {
   final FirestoreServices firestoreServices;
 
-  final FirebaseAuthServices authWebServices;
+  ProductDetailsRepo(this.firestoreServices);
 
-  ProductDetailsRepo(this.firestoreServices, this.authWebServices);
-
-  String get getCurrentUserUid => authWebServices.currentUser!.uid;
 
   Future<void> addToCart(ProductModel product, String uid) async {
     return firestoreServices.setData(
@@ -35,7 +31,7 @@ class ProductDetailsRepo {
   }
 
 
-  Stream<List<FavoriteModel>> getIsFavorite(String uid , String docId) => firestoreServices.collectionsStream(
+  Future<List<FavoriteModel>> getIsFavorite(String uid , String docId) => firestoreServices.getData(
     path: ApiPath.getIsFavorite(uid , docId),
     builder: (data, documentId) => FavoriteModel.fromMap(data!, documentId),
   );

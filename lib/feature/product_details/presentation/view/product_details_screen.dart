@@ -5,7 +5,6 @@ import 'package:e_commerce/feature/product_details/business_logic/product_detail
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../../core/constants/document_id.dart';
 import '../../../../core/widget/drop_down_menu.dart';
@@ -32,15 +31,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var bloc = BlocProvider.of<ProductDetailsCubit>(context);
-    var hi = FirebaseFirestore.instance
-        .collection('Users')
-        .doc(bloc.currentUserUid)
-        .collection('Favorite')
-        .doc(widget.product.id)
-        .collection('isFavorite');
-    //var getIsFavorite = BlocProvider.of<ProductDetailsCubit>(context).getIsFavorite(widget.product.id);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('product name'),

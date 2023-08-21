@@ -3,7 +3,7 @@ import 'package:e_commerce/feature/auth/business_logic/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/data/repo/auth_repo.dart';
 import 'package:e_commerce/feature/auth/presentation/view/auth_screen.dart';
 import 'package:e_commerce/feature/product_details/business_logic/product_details_cubit.dart';
-import 'package:e_commerce/feature/product_details/data/repo/add_to_cart_repo.dart';
+import 'package:e_commerce/feature/product_details/data/repo/product_details_repo.dart';
 
 import 'package:e_commerce/feature/splash/business_logic/splash_cubit.dart';
 import 'package:e_commerce/feature/splash/data/repo/repo.dart';
@@ -59,7 +59,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (_) =>
             BlocProvider(
-              create: (context) => ProductDetailsCubit(getIt.get<ProductDetailsRepo>()),
+              create: (context) => ProductDetailsCubit(getIt.get<ProductDetailsRepo>() , getIt.get<AuthRepo>()),
               child: ProductDetailsScreen(product: product),
             ),
         settings: settings,
